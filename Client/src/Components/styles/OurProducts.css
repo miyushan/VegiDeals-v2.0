@@ -1,0 +1,54 @@
+.our-product-bg{
+    /* background-color: #635E5E; */
+    background-image: url('../../Media/thomas-le-pRJhn4MbsMM-unsplash.jpg');
+    background-repeat: no-repeat;
+    border-image-width: 100%;
+    background-attachment: fixed;
+    background-position: center;
+    background-color: #00000079;
+    background-blend-mode:overlay;
+
+
+}
+
+.outer-products{
+    height: auto;
+    width: 100%;
+    margin-left: auto;
+    margin-right: auto;
+    /* margin-bottom: 220px; */
+    padding-top: 40px;
+    padding-bottom: 30px;     
+}
+
+
+.product-row-1{
+    text-align: center;
+
+    font-family: Roboto;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 24px;
+    line-height: 42px;
+
+    color: #ffffff;
+    margin-bottom: 20px;
+}
+
+.product-row-2{
+    display: flex;
+    margin-bottom: 40px;
+}
+
+.product-column{
+    justify-content: space-around;
+    padding: 0;
+    margin: 22px 10px;
+}
+
+
+
+/* updates parts */
+.card-item{
+    margin: auto;box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px;
+}

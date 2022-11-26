@@ -1,0 +1,27 @@
+.go-to-top{
+    color: #0f0;
+}
+
+.go-up-btn{
+
+    float: right;
+    background-color: transparent;
+    border-color: transparent;
+}
+.go-up-btn:hover{
+    background-color: transparent;
+    border-color: transparent;
+}
+/* .to-top{
+    height: 100vh;
+    position: relative;
+    bottom: 0;
+    right: 0;
+} */
+.to-top{
+    
+    position: -webkit-sticky;
+    position: sticky;
+    top: 57vh;
+    z-index: 1;
+}

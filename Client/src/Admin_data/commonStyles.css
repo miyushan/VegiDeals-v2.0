@@ -1,0 +1,13 @@
+.bred-right{
+    margin-right: 50px;
+}
+
+.btn-log-out{
+    fill: #000000;
+}
+
+.add-log-out{
+    position: fixed;
+    top: 3%;
+    right: 2%;
+}

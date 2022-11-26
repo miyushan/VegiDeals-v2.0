@@ -1,0 +1,73 @@
+.table-column{
+    /* width: 200px; */
+}
+.table-column-2{
+    min-width: 250px;
+}
+.table-column-6{
+    min-width: 128.93px;
+}
+.table-column-1, .table-column-3, .table-column-5{
+    /* max-width: 130px; */
+}
+
+.table-container{
+    width: 60%;
+    margin-left: auto;
+    margin-right: auto;
+    padding: 0;
+    /* box-shadow: rgba(0, 0, 0, 0.05) 0px 10px 15px -3px, rgba(0, 0, 0, 0.25) 0px 4px 6px -2px; */
+}
+
+.cart-shadow{
+    box-shadow: rgba(0, 0, 0, 0.05) 0px 10px 15px -3px, rgba(0, 0, 0, 0.25) 0px 4px 6px -2px;
+}
+
+.table-body{
+    font-family: Roboto;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 14px;
+    align-items: center;
+}
+
+
+.table-head{
+    font-family: Roboto;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 16px;
+    color: #fff;
+    background-color: rgb(1, 150, 1)!important;
+}
+
+.img-product{
+    width: 40px;
+    height: auto;
+    margin-left: 20px;
+    margin-right: 20px;
+}
+
+.left-image{
+    text-align: left;
+    padding-left: 0 !important;
+    padding-right: 0 !important;
+}
+
+.price-col{
+    /* padding-left: 60px !important; */
+    text-align: right;
+}
+
+.remove-from-cart{
+    fill: rgb(255, 0, 0) !important;
+    cursor: pointer;
+}
+.remove-from-cart:hover{
+    fill: rgb(209, 6, 6) !important;
+}
+
+.remove-from-cart-btn{
+    cursor: pointer;
+}
+

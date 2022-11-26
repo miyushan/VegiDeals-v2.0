@@ -1,0 +1,99 @@
+.db-c-bg{
+    width: 100% !important;
+    margin: auto ;
+    background-color: #554C4C;
+    padding-bottom: 80px;
+    padding-top: 40px;
+    padding-left: 5%;
+    padding-right: 5%;
+    min-height: 1100px;
+}
+
+.table-c{
+    margin-top: 30px;
+    box-shadow: rgba(0, 0, 0, 0.151) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
+}
+
+thead{
+    color: rgb(255, 255, 255);
+    background-color:rgb(1, 150, 1) !important;
+    text-align: center;
+}
+
+tbody{
+    background-color: #fff!important;
+}
+
+th{
+    font-family: Roboto;
+    font-style: normal;
+    font-size: 16px;
+}
+
+td{
+    vertical-align: middle;
+    justify-content: center;
+    font-family: Roboto;
+    font-style: normal;
+    font-size: 14px;
+    padding-left: 30px !important;
+    padding-right: 30px !important;
+}
+
+.title{
+    color:rgb(255, 255, 255);
+    font-size: 24px;
+    font-style: bold;
+    font-weight: 600;
+    font-family: Roboto;
+    padding-top: 10px;
+    padding-bottom: 20px;
+}
+
+.sub-title{
+    padding-top: 10px;
+    margin-bottom: 15px;
+    font-size: 18px;
+    font-style: bold;
+    font-family: Roboto;
+    color:rgb(5, 199, 5);
+    z-index: 1;
+}
+
+.bred-c{
+    /* margin-left: -5%; */
+    text-decoration: none !important;
+    /* background-color:rgb(5, 199, 5); */
+
+}
+
+.bred-items{
+    font-size: 14px;
+    font-style: bold;
+    font-family: Roboto;
+    color:rgb(5, 199, 5);
+    text-decoration: none !important;
+}
+
+
+.t-data-c{
+    padding-left: 20px !important;
+    padding-right: 20px !important;
+}
+
+
+.btn-edit, .btn-delete{
+    display: flex;
+    align-items: center;
+}
+
+
+a:-webkit-any-link {
+    text-decoration: none;
+}
+
+.order-table{
+    width: 80%;
+    margin-left: auto;
+    margin-right: auto;
+}

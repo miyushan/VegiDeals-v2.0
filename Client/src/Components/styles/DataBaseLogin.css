@@ -1,0 +1,33 @@
+.admin-login{
+    background-color: #635E5E;
+    background-image: url('../../Media/marisol-benitez-QvkAQTNj4zk-unsplash.jpg');
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-position: center;
+    background-blend-mode: multiply;
+}
+.customer-login{
+    position: absolute;
+    bottom: 3%;
+    right: 3%;
+}
+
+.admin-login-right{
+    position: relative;
+    padding: 0;
+    width: 50%;
+    height: 100vh;
+    flex-direction: column;
+}
+
+.db-loginform{
+    margin-top: -5%;
+}
+
+
+
+
+
+.b_db-loginform{
+    margin-top: -5%;
+}

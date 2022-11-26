@@ -1,0 +1,12 @@
+.btn-p-back{
+    background-color: none;
+    color: #fff;
+    margin-left: -4px;
+}
+
+.back-to-p{
+    position: fixed;
+    bottom: 3%;
+    left: 3%;
+    font-size: 14px;
+}

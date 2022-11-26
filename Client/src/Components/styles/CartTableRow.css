@@ -1,0 +1,8 @@
+.cart-icons{
+    padding: 0;
+}
+
+.add-reduce, .red-cart, .id-column{
+    /* padding: 0 !important; */
+    max-width: 130px;
+}

@@ -1,0 +1,34 @@
+.db-container{
+    width: 100vw!important;
+    height: 100vh!important;
+    margin: auto !important;
+
+}
+
+.db-form{
+    background-color: #554C4C;
+    margin-top: -5%;
+    width: 50%;
+    padding: 20px;
+    box-shadow: rgba(0, 0, 0, 0.329) 0px 10px 15px -3px, rgba(0, 0, 0, 0.25) 0px 4px 6px -2px;
+
+}
+
+.btn-db{
+    width: auto !important;
+}
+
+.db-input{
+    border-radius: 40px;
+    font-family: Roboto;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 14px !important;
+    color: #000000!important;
+    padding: 6px 12px !important;
+}
+
+.db-form-label{
+    margin-bottom: 2px;
+    color: #fff;
+}
