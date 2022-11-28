@@ -71,7 +71,7 @@ export default function CardItem (props){
                     <Container className="b_item-con">
                         <Row>
                             <Col className="text-left">1 Kg</Col>
-                            <Col className="text-left">Rs. {props.Price}</Col>
+                            <Col className="text-right">Rs. {props.Price}</Col>
                         </Row>
                     </Container>
                     <Button onClick={()=>{addToCart(props.id, parseFloat(props.Price)); changeBtn();}} style={buttonStyle} variant="success" className="b_btn-cart" >{cartBtnText}</Button>
