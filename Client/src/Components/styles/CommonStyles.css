@@ -44,7 +44,7 @@
 }
 .b_login-header{
     text-align: left;
-    font-family: Roboto;
+    font-family: Roboto !important;
     font-style: normal;
     font-weight: 900;
     font-size: 36px;

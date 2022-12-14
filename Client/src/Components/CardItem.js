@@ -72,7 +72,9 @@ export default function CardItem (props){
                         <Row>
                             <Col className="text-left">1 Kg</Col>
                             <Col className="text-right">Rs. {props.Price}</Col>
+                            
                         </Row>
+                   
                     </Container>
                     <Button onClick={()=>{addToCart(props.id, parseFloat(props.Price)); changeBtn();}} style={buttonStyle} variant="success" className="b_btn-cart" >{cartBtnText}</Button>
                 </Card.Body>

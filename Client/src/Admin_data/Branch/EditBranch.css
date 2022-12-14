@@ -20,7 +20,7 @@
 
 .db-input{
     border-radius: 40px;
-    font-family: Roboto;
+    font-family: Roboto !important;
     font-style: normal;
     font-weight: normal;
     font-size: 14px !important;

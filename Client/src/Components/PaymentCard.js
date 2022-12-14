@@ -6,12 +6,13 @@ import { EmployeeContext } from '../Context/EmployeeContext';
 import { Form, Container, Button, Row, Col } from "react-bootstrap";
 import {  useNavigate } from "react-router-dom";
 
+
+
 function PaymentCard() {
     const navigate = useNavigate();
 
     const { totalWeight, setCartProducts, priceWithDiscount } = useContext(CartContext);
-    const { managers, orders } = useContext(EmployeeContext);
-
+    const { employees, orders } = useContext(EmployeeContext);
     const [name, setName] = useState('');
     const [address, setAddress] = useState('');
     const [cardNumber, setCardNumber] = useState('');
@@ -85,7 +86,7 @@ function PaymentCard() {
         // console.log(dPersonId);
 
         //to get Managers in same branch
-        managers.forEach(person => {
+        employees.forEach(person => {
             console.log(person.Branch_id, branch);
             if (person.Branch_id === branch && person.manager_id !== null) {
                 tempManagers.push(parseFloat(person.manager_id));
@@ -135,13 +136,18 @@ function PaymentCard() {
 
     const onPayNow = (e) => {
         e.preventDefault();
-        if (name && address && cardNumber && date && cvv) {
+        if (!name || !address || !cardNumber || !date || !cvv) {
+            alert('Please fill the required fields');
+        } else if(cardNumber===16 || cvv===3 || date.length===5){
+            alert('Something went wrong! Please check your card details');
+        }
+        else {
             addtoOrderList();
             findRelatedEmployees();
-        } else {
-            alert('Please fill the required fields')
         }
     }
+
+
 
     return (
         <>
@@ -168,13 +174,15 @@ function PaymentCard() {
                         <Col xs={5}>
                             <Form.Group controlId="formGridExpireDate">
                                 <Form.Label className="b_payment-field-title">Expiration Date</Form.Label>
-                                <Form.Control className="b_login-input b_btn-square" placeholder="00/00" value={date} onChange={onChangeDate} />
+                                <Form.Control type="text" className="b_login-input b_btn-square" placeholder="00/00" value={date} onChange={onChangeDate} />
+ 
                             </Form.Group>
                         </Col>
                         <Col xs={{ span: 4, offset: 3 }}>
                             <Form.Group controlId="formGridCVV">
                                 <Form.Label className="b_payment-field-title">CVV</Form.Label>
-                                <Form.Control className="b_login-input b_btn-square" placeholder="123" value={cvv} onChange={onChangecvv} />
+                                <Form.Control type="number"  maxlength="3" className="b_login-input b_btn-square" placeholder="123" value={cvv} onChange={onChangecvv} />
+
                             </Form.Group>
                         </Col>
                     </Row>
