@@ -3,6 +3,8 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import {Card, Container, Row, Col, Button} from "react-bootstrap";
 import { CartContext } from '../Context/CartContext';
 import { ProductContext } from '../Context/ProductContext';
+import { ReactComponent as Reduce } from '../Media/icons/reduce.svg';
+import { ReactComponent as Increase } from '../Media/icons/increase.svg';
 
 export default function CardItem (props){
     const [buttonStyle, setButtonStyle] = useState({});
@@ -11,8 +13,17 @@ export default function CardItem (props){
 
     const { addToCart } = useContext(CartContext);
     const { productArr } = useContext(ProductContext);
+    
+    const { removeFromCart, changeCartQuantity } = useContext(CartContext);
+
+    let [quantity, setQuantity] = useState([]);
+    const [price, setPrice] = useState(Math.round(props.price * 1e2) / 1e2);
+    const [maxWeight] = useState(parseFloat(props.maxWeight));
 
     useEffect(()=>{
+        quantity = localStorage.getItem('cartDetails')
+        console.log(quantity)
+
         try{
             let cartData = localStorage.getItem('cartDetails');
             cartData = JSON.parse(cartData);
@@ -61,6 +72,26 @@ export default function CardItem (props){
         }
     }
 
+    const increase = () => {
+        if (maxWeight > quantity && quantity > 0) {
+            const tempP = Math.round((price + (0.1 * props.pricePKg)) * 1e2) / 1e2;
+            const tempQ = Math.round((quantity + 0.1) * 1e2) / 1e2
+            setPrice(tempP);
+            setQuantity(tempQ);
+            changeCartQuantity(props.id, tempP, tempQ);
+        }
+    }
+
+    const reduce = () => {
+        if (maxWeight > quantity && quantity > 0.1) {
+            const tempP = Math.round((price - (0.1 * props.pricePKg)) * 1e2) / 1e2;
+            const tempQ = Math.round((quantity - 0.1) * 1e2) / 1e2
+            setPrice(tempP);
+            setQuantity(tempQ);
+            changeCartQuantity(props.id, tempP, tempQ);
+        }
+    }
+
     
     return(
         <>
@@ -73,6 +104,30 @@ export default function CardItem (props){
                             <Col className="text-left">1 Kg</Col>
                             <Col className="text-right">Rs. {props.Price}</Col>
                         </Row>
+                        {/* if added to cart */}
+                        {isButtonSelected ? <div>
+                            <div className='break'></div>
+                            <Row>
+                                <Col className="text-left">Quantity</Col>
+                                <br />
+                                <Col className="text-right">2 Kg</Col>
+                            </Row>
+                            <Row>
+                                <Col></Col>
+                                <Col>
+                                    <Row>
+                                        <Col className="cart-icons text-end" ><Reduce onClick={() => { reduce() }} className="success change-weight" style={{fill:"#8B0000"}} height="22px" /></Col>
+                                        <Col className="cart-icons text-center"><Increase onClick={() => { increase() }} className="success change-weight" style={{fill:"#006402"}} height="22px" /></Col>
+                                    </Row>
+                                </Col>
+                            </Row>
+                            <Row style={{marginTop:"8px"}}>
+                                <Col className="text-left">Price</Col>
+                                <br />
+                                <Col className="text-right">Rs. 241</Col>
+                            </Row>
+                            </div> : null
+                        }
                     </Container>
                     <Button onClick={()=>{addToCart(props.id, parseFloat(props.Price)); changeBtn();}} style={buttonStyle} variant="success" className="b_btn-cart" >{cartBtnText}</Button>
                 </Card.Body>

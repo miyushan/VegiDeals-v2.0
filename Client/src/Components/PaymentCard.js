@@ -10,7 +10,7 @@ function PaymentCard() {
     const navigate = useNavigate();
 
     const { totalWeight, setCartProducts, priceWithDiscount } = useContext(CartContext);
-    const { managers, orders } = useContext(EmployeeContext);
+    const { employees, orders } = useContext(EmployeeContext);
 
     const [name, setName] = useState('');
     const [address, setAddress] = useState('');
@@ -85,7 +85,7 @@ function PaymentCard() {
         // console.log(dPersonId);
 
         //to get Managers in same branch
-        managers.forEach(person => {
+        employees.forEach(person => {
             console.log(person.Branch_id, branch);
             if (person.Branch_id === branch && person.manager_id !== null) {
                 tempManagers.push(parseFloat(person.manager_id));

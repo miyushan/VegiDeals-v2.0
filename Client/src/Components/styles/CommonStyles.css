@@ -493,6 +493,11 @@ hr {
     border-color: rgb(8, 155, 8);
 
 }
+.break{
+    margin-top: 5px;
+    margin-bottom: 5px;
+    border-bottom: 3px solid rgba(0, 255, 0, 0.459);
+}
 
 /* cart table */
 .b_table-container{
