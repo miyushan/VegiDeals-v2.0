@@ -103,7 +103,9 @@ export default function CardItem (props){
                         <Row>
                             <Col className="text-left">1 Kg</Col>
                             <Col className="text-right">Rs. {props.Price}</Col>
+                            
                         </Row>
+                   
                         {/* if added to cart */}
                         {isButtonSelected ? <div>
                             <div className='break'></div>

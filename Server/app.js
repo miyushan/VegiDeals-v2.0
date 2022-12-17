@@ -11,9 +11,7 @@ const port = process.env.PORT || 5000;
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 // cors
-app.use(cors({
-    origin: 'http://localhost:3000'
-}));
+app.use(cors()) // Use this after the variable declaration
 
 
 // create connection
