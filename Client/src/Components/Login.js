@@ -5,6 +5,7 @@ import LoginForm from '../Components/LoginForm';
 import { ReactComponent as Admin } from '../Media/icons/users-cog-solid.svg';
 
 function Login() {
+
     return (
         <>
             <Container id="login" fluid>
@@ -17,6 +18,11 @@ function Login() {
                     </Col>
                     <Col xs={12} md={6} className="b_login-right d-flex align-items-center justify-content-center">
 
+                        <div className="b_user-guide">
+                            <Button onClick={()=>window.confirm("Welcome to user guide!\nYou can order vegitables easily by this system\nFirst you need to create an account. Please presss 'OK' to create an account.")? window.location.href="register": null}  type="submit" variant="danger">New User Guide</Button>
+                           
+                        </div>
+                    
                         <Row className="b_login-row">
                             <Col className="d-block justify-content-center">
                                 <div className="b_login-title b_login-title-1 b_add-curser">Welcome to VegiDeals</div>
@@ -27,11 +33,14 @@ function Login() {
 
                         <div className="b_create-account">
                             <Button href="register" className="b_create-account-btn" type="submit" variant="success">Create A New Account</Button>
+                           
                         </div>
                     </Col>
 
                 </Row>
+              
             </Container>
+    
         </>
     );
 }
