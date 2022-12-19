@@ -22,7 +22,7 @@ export default function CardItem (props){
 
     useEffect(()=>{
         quantity = localStorage.getItem('cartDetails')
-        console.log(quantity)
+        // console.log(quantity)
 
         try{
             let cartData = localStorage.getItem('cartDetails');

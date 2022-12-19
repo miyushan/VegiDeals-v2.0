@@ -83,7 +83,7 @@
     bottom: 3%;
 }
 .b_create-account-btn{
-    border-radius: 40px !important;
+    border-radius: 20px !important;
     font-family: Roboto;
     font-style: normal;
     font-weight: normal;
@@ -94,6 +94,12 @@
     background-color: rgb(4, 133, 4);
     border-color: rgb(4, 133, 4);
 }
+.b_user-guide{
+    position: absolute;
+    right: 3%;
+    top: 3%;
+}
+
 .b_create-account-btn:hover{
     background-color: rgb(4, 117, 4);
     border-color: rgb(4, 117, 4);

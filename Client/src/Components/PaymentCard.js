@@ -93,12 +93,12 @@ function PaymentCard() {
 
         //to get Managers in same branch
         employees.forEach(person => {
-            console.log(person.Branch_id, branch);
+            // console.log(person.Branch_id, branch);
             if (person.Branch_id === branch && person.manager_id !== null) {
                 tempManagers.push(parseFloat(person.manager_id));
             }
         })
-        console.log(tempManagers);
+        // console.log(tempManagers);
         managerId = tempManagers[Math.floor(Math.random() * tempManagers.length)];
         console.log(managerId);
     }
@@ -144,12 +144,12 @@ function PaymentCard() {
         e.preventDefault();
         if (!name || !address || !cardNumber || !date || !cvv) {
             alert('Please fill the required fields');
-        } else if(cardNumber.length==16 || cvv.length==3 || date.length==5){
-            alert('Something went wrong! Please check your card details');
-        }
-        else {
+        } else if(cardNumber.length===16 || cvv.length===3){
             addtoOrderList();
             findRelatedEmployees();
+        }
+        else {
+            alert('Something went wrong! Please check your card details');
         }
     }
     
