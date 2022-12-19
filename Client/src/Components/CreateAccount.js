@@ -5,6 +5,7 @@ import CreateAccountForm from '../Components/CreateAccountForm';
 import { ReactComponent as Admin } from '../Media/icons/users-cog-solid.svg';
 
 function CreateAccount() {
+
     return (
         <>
             <Container id="register" fluid>

@@ -6,6 +6,17 @@ import { ReactComponent as Admin } from '../Media/icons/users-cog-solid.svg';
 
 function Login() {
 
+    function newUser(){
+        //Session object
+        let newUser = {
+            isNeedGuide: true,
+        }
+
+        //Add the session
+        localStorage.setItem('newUser', JSON.stringify(newUser));
+        window.location.href="register"
+    }
+
     return (
         <>
             <Container id="login" fluid>
@@ -19,7 +30,7 @@ function Login() {
                     <Col xs={12} md={6} className="b_login-right d-flex align-items-center justify-content-center">
 
                         <div className="b_user-guide">
-                            <Button onClick={()=>window.confirm("Welcome to user guide!\nYou can order vegitables easily by this system\nFirst you need to create an account. Please presss 'OK' to create an account.")? window.location.href="register": null}  type="submit" variant="danger">New User Guide</Button>
+                            <Button onClick={()=>window.confirm("Welcome to user guide!\nYou can order vegitables easily by this system\nFirst you need to create an account. Please presss 'OK' to create an account.")? newUser(): localStorage.removeItem('newUser')}  type="submit" variant="danger">New User Guide</Button>
                            
                         </div>
                     

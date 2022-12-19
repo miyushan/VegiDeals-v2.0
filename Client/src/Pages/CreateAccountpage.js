@@ -6,21 +6,46 @@ class CreateAccountpage extends Component {
 
     constructor(props) {
         super(props);
+      
         this.state = {
             spinner: true,
-            show: false
+            show: false,
+            isNeedGuide: false
+    
         }
         this.componentDidMount = this.componentDidMount.bind(this);
         this.onClick = this.onClick.bind(this);
     }
 
     componentDidMount() {
+
         setTimeout(() => {
+     
             this.setState({
                 spinner: false,
                 show: true
             })
         }, 2700)
+        setTimeout(() => {
+            try {
+                //get data in the session
+                let data = localStorage.getItem('newUser');
+                data = JSON.parse(data);
+                if(data.isNeedGuide){
+                    
+                    this.setState({
+                        isNeedGuide: true,
+                      
+                    })
+                }
+                // console.log("Successful Login!");
+         
+            }
+            catch (err) {
+                
+            }
+ 
+        }, 3000)
     }
 
     onClick() {
@@ -28,7 +53,7 @@ class CreateAccountpage extends Component {
     }
 
     render() {
-        console.log(this.state.show)
+        // console.log(this.state.show)
         return (
             <>
                 {this.state.spinner ?
@@ -38,7 +63,15 @@ class CreateAccountpage extends Component {
                     : null}
                 <div style={{ display: this.state.show ? "block" : "none" }}>
                     <CreateAccount />
+                    {console.log(this.state.isNeedGuide)}
                 </div>
+           
+                {this.state.isNeedGuide ? window.alert("Please fill these fields and Create an account.") : null}
+                {/* {this.state.isNeedGuide ? (this.setState({
+                    isNeedGuide:false
+                })
+                , window.alert("You need to login first!")
+               ): null} */}
             </>
         );
     }
