@@ -9,7 +9,8 @@ class Loginpage extends Component {
         super(props);
         this.state = {
             spinner: true,
-            show: false
+            show: false,
+            isNeedGuide: false
         }
         this.componentDidMount = this.componentDidMount.bind(this);
     }
@@ -21,6 +22,26 @@ class Loginpage extends Component {
                 show: true
             })
         }, 2700)
+        setTimeout(() => {
+            try {
+                //get data in the session
+                let data = localStorage.getItem('newUser');
+                data = JSON.parse(data);
+                if(data.isCreatedAcc){
+                    
+                    this.setState({
+                        isNeedGuide: true,
+                      
+                    })
+                }
+                // console.log("Successful Login!");
+         
+            }
+            catch (err) {
+                
+            }
+ 
+        }, 3000)
     }
 
     render() {
@@ -34,6 +55,7 @@ class Loginpage extends Component {
                 <div style={{ display: this.state.show ? "block" : "none" }}>
                     <Login />
                 </div>
+                {this.state.isNeedGuide ? window.confirm("Now you can LogIn to the system using your mobile number and password.\n(If you want to exit from User Guide press 'Cancel')")?null: localStorage.removeItem('newUser'): null}
             </>
         );
     }

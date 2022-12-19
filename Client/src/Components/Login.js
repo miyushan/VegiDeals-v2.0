@@ -14,7 +14,7 @@ function Login() {
 
         //Add the session
         localStorage.setItem('newUser', JSON.stringify(newUser));
-        window.location.href="register"
+       
     }
 
     return (
@@ -30,7 +30,7 @@ function Login() {
                     <Col xs={12} md={6} className="b_login-right d-flex align-items-center justify-content-center">
 
                         <div className="b_user-guide">
-                            <Button onClick={()=>window.confirm("Welcome to user guide!\nYou can order vegitables easily by this system\nFirst you need to create an account. Please presss 'OK' to create an account.")? newUser(): localStorage.removeItem('newUser')}  type="submit" variant="danger">New User Guide</Button>
+                            <Button onClick={()=>window.confirm("Welcome to user guide!\nYou can order vegitables easily by this system\nFirst you need to create an account. \nPlease click on 'Create a New Account' to create an account.\nOr if you want to exit from User Guide press 'Cancel'")? newUser(): localStorage.removeItem('newUser')}  type="submit" variant="danger">New User Guide</Button>
                            
                         </div>
                     

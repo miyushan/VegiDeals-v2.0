@@ -66,7 +66,8 @@ class CreateAccountpage extends Component {
                     {console.log(this.state.isNeedGuide)}
                 </div>
            
-                {this.state.isNeedGuide ? window.alert("Please fill these fields and Create an account.") : null}
+                {this.state.isNeedGuide ? window.confirm("Please fill these fields and Create an account.\n(If you want to exit from User Guide press 'Cancel')")?null: localStorage.removeItem('newUser'): null}
+     
                 {/* {this.state.isNeedGuide ? (this.setState({
                     isNeedGuide:false
                 })
