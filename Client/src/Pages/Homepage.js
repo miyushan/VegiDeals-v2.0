@@ -23,7 +23,8 @@ class Homepage extends Component {
         this.state = {
             // user : this.props.firstName
             spinner: true,
-            show: false
+            show: false,
+            isNeedGuide: false,
         }
         this.componentDidMount = this.componentDidMount.bind(this);
 
@@ -36,7 +37,20 @@ class Homepage extends Component {
                 spinner: false,
                 show: true
             })
-        }, 2700)
+        }, 2700);
+        setTimeout(() => {
+            try {
+              //get data in the session
+              let data = localStorage.getItem("newUser");
+              data = JSON.parse(data);
+              if (data.isCreatedAcc) {
+                this.setState({
+                  isNeedGuide: true,
+                });
+              }
+              console.log("Successful Login!");
+            } catch (err) {}
+          }, 3000);
     }
 
     render(props) {
@@ -65,7 +79,15 @@ class Homepage extends Component {
                         <Footer />
                         <GoToCart />
                     </div>
-                </div>
+        </div>
+        {console.log(this.state.isNeedGuide)}
+                {this.state.isNeedGuide
+          ? window.confirm(
+              "Congradulation! You successfully entered to the system. \nNow you can order vegetables which you need.\nScroll down and select a vegetable to continue the guidence.\n(If you want to exit from User Guide press 'Cancel')"
+            )
+            ? null
+            : localStorage.removeItem("newUser")
+          : null}
 
             </>
         );

@@ -1,10 +1,10 @@
-import React, { useContext, useEffect, useState } from 'react';
-import 'bootstrap/dist/css/bootstrap.min.css';
-import {Card, Container, Row, Col, Button} from "react-bootstrap";
-import { CartContext } from '../Context/CartContext';
-import { ProductContext } from '../Context/ProductContext';
-import { ReactComponent as Reduce } from '../Media/icons/reduce.svg';
-import { ReactComponent as Increase } from '../Media/icons/increase.svg';
+import React, { useContext, useEffect, useState } from "react";
+import "bootstrap/dist/css/bootstrap.min.css";
+import { Card, Container, Row, Col, Button } from "react-bootstrap";
+import { CartContext } from "../Context/CartContext";
+import { ProductContext } from "../Context/ProductContext";
+import { ReactComponent as Reduce } from "../Media/icons/reduce.svg";
+import { ReactComponent as Increase } from "../Media/icons/increase.svg";
 
 export default function CardItem (props){
     const [buttonStyle, setButtonStyle] = useState({});
@@ -59,16 +59,17 @@ export default function CardItem (props){
             setPrice(props.Price);
         }
     }
+  };
 
-    const getItem = (id) => {
-        const numOfImages = productArr.length;
+  const getItem = (id) => {
+    const numOfImages = productArr.length;
 
-        if(numOfImages>id){
-            return productArr[id];
-        }else{
-            return productArr[0];
-        }
+    if (numOfImages > id) {
+      return productArr[id];
+    } else {
+      return productArr[0];
     }
+  };
 
     const increase = () => {
         if (maxWeight > quantity && quantity > 0) {
@@ -139,24 +140,6 @@ export default function CardItem (props){
 
 }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 // export default class CardItem extends Component {
 
 //     constructor(props) {
@@ -168,7 +151,6 @@ export default function CardItem (props){
 //         }
 //     }
 
-    
 //     onClick(key) {
 //         console.log(key);
 //         this.temp = this.clickedItems.concat(key);
@@ -179,7 +161,6 @@ export default function CardItem (props){
 //         // console.log(this.clickedItems);
 
 //     }
-
 
 //     render(props){
 //         return(
@@ -197,10 +178,8 @@ export default function CardItem (props){
 //                         <Button onClick={()=>{this.onClick(this.props.Name)}} className="btn-cart">Add To Cart</Button>
 //                     </Card.Body>
 //                 </Card>
-//             </>   
+//             </>
 //         )
 //     }
-    
-    
 
 // }
