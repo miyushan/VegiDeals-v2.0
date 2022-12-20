@@ -144,7 +144,7 @@ function PaymentCard() {
         e.preventDefault();
         if (!name || !address || !cardNumber || !date || !cvv) {
             alert('Please fill the required fields');
-        } else if(cardNumber.length===16 || cvv.length===3){
+        } else if(cardNumber.length===16 && cvv.length===3){
             addtoOrderList();
             findRelatedEmployees();
         }
