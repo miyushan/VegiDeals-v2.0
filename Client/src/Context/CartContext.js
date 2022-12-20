@@ -150,7 +150,7 @@ function CartContextProvider(props) {
             console.log(tempData);
             if (newItems.length===1 && tempData.isCreatedAcc) {
                 if(window.confirm(
-                        "Your product is added to the cart. \nYou can select the quantity now.\nAfter click on 'OK' you will see '+' and '-' signs, which can respectively increse and decrease quantity by 100g.\nIf you want to remove an item, you will have a remove button also.\nAfter selecting items click on cart icon.\n(If you want to exit from User Guide press 'Cancel')"
+                        "Your product is added to the cart. \nYou can select the quantity now.\nAfter click on 'OK' you will see '+' and '-' signs, which can respectively increse and decrease quantity by 100g.\nIf you want to remove an item, there is a remove button also.\nAfter selecting items which you want to buy, please click on cart icon.\n(If you want to exit from User Guide press 'Cancel')"
                       )===true  ){
                         let newUser = {
                             selectedAProduct: true,
