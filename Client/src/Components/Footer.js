@@ -31,7 +31,7 @@ function Footer() {
                         </Col>
 
                         {/* <Row className="align-items-start"> */}
-                        <Col sm={9} className="b_footer-4 order-5 order-sm-4 b_copyright mb-4 mb-sm-0">Copyright © 2021 All Rights Reserved by<br />Miyushan</Col>
+                        <Col sm={9} className="b_footer-4 order-5 order-sm-4 b_copyright mb-4 mb-sm-0">Copyright © 2021 All Rights Reserved by<br />Miyushan & Nadeesha</Col>
                         <Col sm={3} className="b_footer-5 order-3 order-sm-5 b_copyright d-flex mb-4 mb-sm-0">
                             <a href="#" className='b_button'><Whtsp className="b_sign-out-btn" height="18px" /></a>
                             <a href="#" className="b_button"><Fb height="18px" /></a>
