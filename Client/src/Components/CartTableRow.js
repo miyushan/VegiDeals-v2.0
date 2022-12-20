@@ -18,7 +18,7 @@ function CartTableRow(props) {
 
     const increase = () => {
         if (maxWeight > quantity && quantity > 0) {
-            const tempP = Math.round((price + (0.1 * props.pricePKg)) * 1e2) / 1e2;
+            const tempP = Math.round((props.pricePKg * (quantity+0.1)) * 1e2) / 1e2;
             const tempQ = Math.round((quantity + 0.1) * 1e2) / 1e2
             setPrice(tempP);
             setQuantity(tempQ);
@@ -28,7 +28,7 @@ function CartTableRow(props) {
 
     const reduce = () => {
         if (maxWeight > quantity && quantity > 0.1) {
-            const tempP = Math.round((price - (0.1 * props.pricePKg)) * 1e2) / 1e2;
+            const tempP = Math.round((props.pricePKg * (quantity-0.1)) * 1e2) / 1e2;
             const tempQ = Math.round((quantity - 0.1) * 1e2) / 1e2
             setPrice(tempP);
             setQuantity(tempQ);
@@ -46,7 +46,7 @@ function CartTableRow(props) {
                     <Col className="cart-icons"><Increase onClick={() => { increase() }} className="success change-weight" height="22px" /></Col>
                 </Row>
             </td>
-            <td>{props.weight} Kg</td>
+            <td>{props.weight.toFixed(1)} Kg</td>
             <td className="red-cart">
                 <Remove className="success remove-from-cart" onClick={(e) => { removeFromCart(props.id); e.preventDefault(); }} height="22px" />
             </td>

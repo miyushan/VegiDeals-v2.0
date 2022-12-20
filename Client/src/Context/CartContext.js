@@ -28,7 +28,7 @@ function CartContextProvider(props) {
         let tempP = 0;
         let tempW = 0;
         let tempPWD = 0;
-        try{
+        try {
             let price = localStorage.getItem('cartDetails');
             price = JSON.parse(price);
 
@@ -43,16 +43,16 @@ function CartContextProvider(props) {
             price.forEach(item => {
                 tempP = tempP + parseFloat(item.CartPrice);
                 tempW = tempW + parseFloat(item.CartWeight);
-                tempPWD = ((tempP * (100-discount))/100).toFixed( 2 );
+                tempPWD = ((tempP * (100 - discount)) / 100).toFixed(2);
                 // console.log(tempPWD);
                 setTotalPrice(tempP);
                 setTotalWeight(tempW);
                 setPriceWithDiscount(tempPWD);
             })
-        }catch{
+        } catch {
             // console.log('No products in the cart');
         }
-    },[])
+    }, [])
 
 
     //change selected item price and weight when change the quantity of a cart item
@@ -61,19 +61,19 @@ function CartContextProvider(props) {
         let tempW = 0;
         let tempPWD = 0;
         cartProducts.map(item => {
-            if (item.id === Id) { 
+            if (item.id === Id) {
                 item.CartPrice = price;
                 item.CartWeight = weight;
                 return item;
-            }else{
+            } else {
                 return item;
             }
         })
-        
+
         cartProducts.forEach(item => {
             tempP = tempP + Math.round(item.CartPrice * 1e2) / 1e2;
             tempW = tempW + item.CartWeight;
-            tempPWD = ((tempP * (100-discount))/100).toFixed( 2 );
+            tempPWD = ((tempP * (100 - discount)) / 100).toFixed(2);
             setTotalPrice(tempP);
             setTotalWeight(tempW);
             setPriceWithDiscount(tempPWD);
@@ -121,11 +121,11 @@ function CartContextProvider(props) {
         let newItems = [...cartProducts, data[0]]
 
         newItems = newItems.map(item => {
-            if (item.id === Id) { 
-                item.CartPrice = (item.Price)/2;
-                item.CartWeight = 0.5;
+            if (item.id === Id) {
+                item.CartPrice = (item.Price);
+                item.CartWeight = 1;
                 return item;
-            }else{
+            } else {
                 return item;
             }
         })
@@ -133,13 +133,13 @@ function CartContextProvider(props) {
         newItems.forEach(item => {
             tempP = tempP + parseFloat(item.CartPrice).toFixed(2);
             tempW = tempW + parseFloat(item.CartWeight);
-            tempPWD = ((tempP * (100-discount))/100).toFixed( 2 );
+            tempPWD = ((tempP * (100 - discount)) / 100).toFixed(2);
             setTotalPrice(tempP);
             setTotalWeight(tempW);
             setPriceWithDiscount(tempPWD);
         })
 
-        setCartProducts(newItems);        
+        setCartProducts(newItems);
         console.log("Added product\t" + Id);
         localStorage.setItem('cartDetails', JSON.stringify(newItems));
     }
@@ -147,16 +147,16 @@ function CartContextProvider(props) {
     const removeFromCart = (Id) => {
 
         cartProducts.forEach(item => {
-            if(item.id===Id) {
-                const tempP = totalPrice-item.CartPrice.toFixed(2);
-                const tempW = totalWeight-item.CartWeight;
-                const tempPWD = ((tempP * (100-discount))/100).toFixed( 2 );
+            if (item.id === Id) {
+                const tempP = totalPrice - item.CartPrice.toFixed(2);
+                const tempW = totalWeight - item.CartWeight;
+                const tempPWD = ((tempP * (100 - discount)) / 100).toFixed(2);
                 setTotalPrice(tempP);
                 setTotalWeight(tempW);
                 setPriceWithDiscount(tempPWD);
             }
         })
-        
+
         const data = cartProducts.filter(product => {
             return product.id !== Id;
         })

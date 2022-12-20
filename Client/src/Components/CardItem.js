@@ -20,8 +20,6 @@ export default function CardItem (props){
     const [price, setPrice] = useState(props.Price);
     const maxWeight = parseFloat(props.Weight);
 
-    const [count, setCount] = useState(1)
-
     useEffect(()=>{
         try{
             let cartData = localStorage.getItem('cartDetails');
@@ -73,11 +71,8 @@ export default function CardItem (props){
     }
 
     const increase = () => {
-        console.log(quantity, maxWeight);
         if (maxWeight > quantity && quantity > 0) {
-            console.log(price, props.price);
-            const tempP = Math.round((props.Price * (count+0.1)) * 1e2) / 1e2;
-            setCount(count+0.1);
+            const tempP = Math.round((props.Price * (quantity + 0.1)) * 1e2) / 1e2;
             const tempQ = Math.round((quantity + 0.1) * 1e2) / 1e2
             setPrice(tempP);
             setQuantity(tempQ);
@@ -87,8 +82,7 @@ export default function CardItem (props){
 
     const reduce = () => {
         if (maxWeight > quantity && quantity > 0.1) {
-            const tempP = Math.round((props.Price * (count-0.1)) * 1e2) / 1e2;
-            setCount(count-0.1);
+            const tempP = Math.round((props.Price * (quantity - 0.1)) * 1e2) / 1e2;
             const tempQ = Math.round((quantity - 0.1) * 1e2) / 1e2
             setPrice(tempP);
             setQuantity(tempQ);
@@ -118,7 +112,7 @@ export default function CardItem (props){
                                 <br />
                                 <Col className="text-right" style={{fontWeight: 'bold'}}>{quantity} Kg</Col>
                             </Row>
-                            <Row>
+                            <Row style={{paddingTop:'10px', marginBottom:'10px'}}>
                                 <Col></Col>
                                 <Col>
                                     <Row>
