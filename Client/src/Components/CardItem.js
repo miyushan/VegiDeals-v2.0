@@ -14,16 +14,14 @@ export default function CardItem (props){
     const { addToCart } = useContext(CartContext);
     const { productArr } = useContext(ProductContext);
     
-    const { removeFromCart, changeCartQuantity } = useContext(CartContext);
+    const { changeCartQuantity } = useContext(CartContext);
 
-    let [quantity, setQuantity] = useState([]);
-    const [price, setPrice] = useState(Math.round(props.price * 1e2) / 1e2);
-    const [maxWeight] = useState(parseFloat(props.maxWeight));
+    let [quantity, setQuantity] = useState(1);
+    const [price, setPrice] = useState(props.Price);
+    const maxWeight = parseFloat(props.Weight);
 
     useEffect(()=>{
-        quantity = localStorage.getItem('cartDetails')
-        // console.log(quantity)
-
+        console.log(props.maxWeight);
         try{
             let cartData = localStorage.getItem('cartDetails');
             cartData = JSON.parse(cartData);
@@ -36,15 +34,14 @@ export default function CardItem (props){
                     });
                     setCartBtnText('Remove');
                     setisButtonSelected(true);
+                    setQuantity(item.CartWeight);
+                    setPrice(item.CartPrice);
                 }
             })
         }catch(err){
             // console.log(err);
-            console.log('Item is not in the cart');
         }
     },[props.Name])
-
-    
     
 
     const changeBtn = () =>{
@@ -59,6 +56,8 @@ export default function CardItem (props){
             setButtonStyle({});
             setisButtonSelected(false);
             setCartBtnText('Add To Cart');
+            setQuantity(1);
+            setPrice(props.Price);
         }
     }
 
@@ -73,8 +72,10 @@ export default function CardItem (props){
     }
 
     const increase = () => {
+        console.log(quantity, maxWeight);
         if (maxWeight > quantity && quantity > 0) {
-            const tempP = Math.round((price + (0.1 * props.pricePKg)) * 1e2) / 1e2;
+            console.log(price, props.price);
+            const tempP = Math.round((price + (0.1 * props.Price)) * 1e2) / 1e2;
             const tempQ = Math.round((quantity + 0.1) * 1e2) / 1e2
             setPrice(tempP);
             setQuantity(tempQ);
@@ -84,7 +85,7 @@ export default function CardItem (props){
 
     const reduce = () => {
         if (maxWeight > quantity && quantity > 0.1) {
-            const tempP = Math.round((price - (0.1 * props.pricePKg)) * 1e2) / 1e2;
+            const tempP = Math.round((price - (0.1 * props.Price)) * 1e2) / 1e2;
             const tempQ = Math.round((quantity - 0.1) * 1e2) / 1e2
             setPrice(tempP);
             setQuantity(tempQ);
@@ -112,7 +113,7 @@ export default function CardItem (props){
                             <Row>
                                 <Col className="text-left">Quantity</Col>
                                 <br />
-                                <Col className="text-right">2 Kg</Col>
+                                <Col className="text-right" style={{fontWeight: 'bold'}}>{quantity} Kg</Col>
                             </Row>
                             <Row>
                                 <Col></Col>
@@ -126,7 +127,7 @@ export default function CardItem (props){
                             <Row style={{marginTop:"8px"}}>
                                 <Col className="text-left">Price</Col>
                                 <br />
-                                <Col className="text-right">Rs. 241</Col>
+                                <Col className="text-right" style={{fontWeight: 'bold'}}>Rs. {price}</Col>
                             </Row>
                             </div> : null
                         }
