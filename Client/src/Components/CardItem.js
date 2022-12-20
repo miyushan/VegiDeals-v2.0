@@ -20,8 +20,9 @@ export default function CardItem (props){
     const [price, setPrice] = useState(props.Price);
     const maxWeight = parseFloat(props.Weight);
 
+    const [count, setCount] = useState(1)
+
     useEffect(()=>{
-        console.log(props.maxWeight);
         try{
             let cartData = localStorage.getItem('cartDetails');
             cartData = JSON.parse(cartData);
@@ -75,7 +76,8 @@ export default function CardItem (props){
         console.log(quantity, maxWeight);
         if (maxWeight > quantity && quantity > 0) {
             console.log(price, props.price);
-            const tempP = Math.round((price + (0.1 * props.Price)) * 1e2) / 1e2;
+            const tempP = Math.round((props.Price * (count+0.1)) * 1e2) / 1e2;
+            setCount(count+0.1);
             const tempQ = Math.round((quantity + 0.1) * 1e2) / 1e2
             setPrice(tempP);
             setQuantity(tempQ);
@@ -85,7 +87,8 @@ export default function CardItem (props){
 
     const reduce = () => {
         if (maxWeight > quantity && quantity > 0.1) {
-            const tempP = Math.round((price - (0.1 * props.Price)) * 1e2) / 1e2;
+            const tempP = Math.round((props.Price * (count-0.1)) * 1e2) / 1e2;
+            setCount(count-0.1);
             const tempQ = Math.round((quantity - 0.1) * 1e2) / 1e2
             setPrice(tempP);
             setQuantity(tempQ);
@@ -103,7 +106,7 @@ export default function CardItem (props){
                     <Container className="b_item-con">
                         <Row>
                             <Col className="text-left">1 Kg</Col>
-                            <Col className="text-right">Rs. {props.Price}</Col>
+                            <Col className="text-right">Rs. {props.Price.toFixed(2)}</Col>
                             
                         </Row>
                    
@@ -127,7 +130,7 @@ export default function CardItem (props){
                             <Row style={{marginTop:"8px"}}>
                                 <Col className="text-left">Price</Col>
                                 <br />
-                                <Col className="text-right" style={{fontWeight: 'bold'}}>Rs. {price}</Col>
+                                <Col className="text-right" style={{fontWeight: 'bold'}}>Rs. {price.toFixed(2)}</Col>
                             </Row>
                             </div> : null
                         }
