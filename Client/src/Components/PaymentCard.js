@@ -4,7 +4,7 @@ import axios from 'axios';
 import { CartContext } from '../Context/CartContext';
 import { EmployeeContext } from '../Context/EmployeeContext';
 import { Form, Container, Button, Row, Col } from "react-bootstrap";
-import {  useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 
 
@@ -72,7 +72,7 @@ function PaymentCard() {
         const temp = e.target.value.replace(/\D/g, '');
         setcvc(temp);
         // setcvc(e.target.value);
-        
+
     }
 
 
@@ -144,7 +144,7 @@ function PaymentCard() {
         e.preventDefault();
         if (!name || !address || !cardNumber || !date || !cvv) {
             alert('Please fill the required fields');
-        } else if(cardNumber.length===16 || cvv.length===3){
+        } else if (cardNumber.length === 16 && cvv.length === 3) {
             addtoOrderList();
             findRelatedEmployees();
         }
@@ -152,7 +152,7 @@ function PaymentCard() {
             alert('Something went wrong! Please check your card details');
         }
     }
-    
+
 
 
     return (
@@ -188,7 +188,7 @@ function PaymentCard() {
                         <Col xs={{ span: 4, offset: 3 }}>
                             <Form.Group controlId="formGridCVV">
                                 <Form.Label className="b_payment-field-title">CVC</Form.Label>
-                                <Form.Control type="text" maxLength={3} className="b_login-input b_btn-square" placeholder="123" value={cvv} onChange={onChangecvv} required/>
+                                <Form.Control type="text" maxLength={3} className="b_login-input b_btn-square" placeholder="123" value={cvv} onChange={onChangecvv} required />
 
                             </Form.Group>
 
