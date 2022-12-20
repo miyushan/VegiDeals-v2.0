@@ -141,6 +141,26 @@ function CartContextProvider(props) {
 
         setCartProducts(newItems);        
         console.log("Added product\t" + Id);
+        try {
+            //get data in the session
+            console.log(newItems.length);
+            let tempData = localStorage.getItem("newUser");
+            tempData = JSON.parse(tempData);
+            if (tempData.isCreatedAcc && newItems.length===1) {
+                console.log(tempData);
+                localStorage.removeItem("newUser");
+                let newUser = {
+                    selectedAProduct: true,
+                    isCreatedAcc: false
+                };
+                
+                //Add the session
+                localStorage.setItem("newUser", JSON.stringify(newUser));
+            }
+            console.log(newItems.length);
+            // console.log("Successful Login!");
+          } catch (err) {}
+
         localStorage.setItem('cartDetails', JSON.stringify(newItems));
     }
     //remove a product from the cart

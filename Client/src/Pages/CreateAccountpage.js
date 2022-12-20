@@ -50,16 +50,17 @@ class CreateAccountpage extends Component {
         ) : null}
         <div style={{ display: this.state.show ? "block" : "none" }}>
           <CreateAccount />
-          {console.log(this.state.isNeedGuide)}
         </div>
 
+        {/* {console.log(this.state.isNeedGuide)} */}
         {this.state.isNeedGuide
           ? window.confirm(
-              "Please fill these fields and Create an account.\n(If you want to exit from User Guide press 'Cancel')"
+            "Please fill these fields and Create an account.\n(If you want to exit from User Guide press 'Cancel')"
             )
             ? null
             : localStorage.removeItem("newUser")
-          : null}
+            : null}
+          
 
         {/* {this.state.isNeedGuide ? (this.setState({
                     isNeedGuide:false
