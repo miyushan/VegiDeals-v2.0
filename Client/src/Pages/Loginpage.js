@@ -19,6 +19,7 @@ class Loginpage extends Component {
       this.setState({
         spinner: false,
         show: true,
+        isNeedGuide: false
       });
     }, 2700);
     setTimeout(() => {
@@ -47,6 +48,7 @@ class Loginpage extends Component {
         <div style={{ display: this.state.show ? "block" : "none" }}>
           <Login />
         </div>
+        {console.log(this.state.isNeedGuide)}
         {this.state.isNeedGuide
           ? window.confirm(
               "Now you can LogIn to the system using your mobile number and password.\n(If you want to exit from User Guide press 'Cancel')"

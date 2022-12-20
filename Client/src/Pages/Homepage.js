@@ -35,8 +35,7 @@ class Homepage extends Component {
         setTimeout(() => {
             this.setState({
                 spinner: false,
-                show: true,
-                isNeedGuide: false
+                show: true
             })
         }, 2700);
         setTimeout(() => {

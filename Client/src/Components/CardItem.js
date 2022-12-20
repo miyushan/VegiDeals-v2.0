@@ -10,7 +10,7 @@ export default function CardItem (props){
     const [buttonStyle, setButtonStyle] = useState({});
     const [isButtonSelected, setisButtonSelected] = useState(false);
     const [cartBtnText, setCartBtnText] = useState('Add To Cart');
-
+    const [isNeedGuide, setIsNeedGuide] = useState(false);
     const { addToCart } = useContext(CartContext);
     const { productArr } = useContext(ProductContext);
     
@@ -92,6 +92,22 @@ export default function CardItem (props){
         }
     }
 
+
+    const newUser=()=>{
+        try {
+            //get data in the session
+            let data = localStorage.getItem("newUser");
+            data = JSON.parse(data);
+            // console.log(data);
+            if (data.selectedAProduct) {
+                 setIsNeedGuide(true);
+           
+            }
+            // console.log("Successful Login!");
+          } catch (err) {}
+  
+    }
+
     
     return(
         <>
@@ -131,6 +147,11 @@ export default function CardItem (props){
                             </div> : null
                         }
                     </Container>
+                    {newUser()}
+                    {console.log(isNeedGuide)}
+                    {
+                    isNeedGuide?
+                    window.alert("You have selected a product. Please create an account to proceed with the order."):null}
                     <Button onClick={()=>{addToCart(props.id, parseFloat(props.Price)); changeBtn();}} style={buttonStyle} variant="success" className="b_btn-cart" >{cartBtnText}</Button>
                 </Card.Body>
             </Card>

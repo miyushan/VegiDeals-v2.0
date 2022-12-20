@@ -25,6 +25,7 @@ function OurProducts() {
         //get data in the session
         let data = localStorage.getItem("newUser");
         data = JSON.parse(data);
+        console.log(data);
         if (data.selectedAProduct) {
           this.setState({
             isNeedGuide: true,

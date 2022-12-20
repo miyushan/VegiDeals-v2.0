@@ -14,6 +14,7 @@ function CartContextProvider(props) {
     const [totalWeight, setTotalWeight] = useState(0);
     const [priceWithDiscount, setPriceWithDiscount] = useState(0);
     const [isAddedToCart, setIsAddedToCart] = useState();
+    const [isNeedGuide, setIsNeedGuide] = useState(false);
     const discount = 5;
 
     useEffect(() => {
@@ -146,16 +147,27 @@ function CartContextProvider(props) {
             console.log(newItems.length);
             let tempData = localStorage.getItem("newUser");
             tempData = JSON.parse(tempData);
-            if (tempData.isCreatedAcc && newItems.length===1) {
-                console.log(tempData);
-                localStorage.removeItem("newUser");
+            console.log(tempData);
+            if (newItems.length===1 && tempData.isCreatedAcc===true) {
+                // localStorage.removeItem("newUser");
+                // let newUser = {
+                //     selectedAProduct: true,
+                //     isCreatedAcc: false
+                // };
+          
+                
+                //Add the session
+                // localStorage.setItem("newUser", JSON.stringify(newUser));
+                setIsNeedGuide(true);
+            }else{
                 let newUser = {
-                    selectedAProduct: true,
-                    isCreatedAcc: false
+                    selectedAProduct: false,
+                  
                 };
                 
                 //Add the session
                 localStorage.setItem("newUser", JSON.stringify(newUser));
+                setIsNeedGuide(false);
             }
             console.log(newItems.length);
             // console.log("Successful Login!");
@@ -192,6 +204,7 @@ function CartContextProvider(props) {
     return (
         <CartContext.Provider value={{ addToCart, cartProducts, setCartProducts, removeFromCart, changeCartQuantity, totalPrice, totalWeight, priceWithDiscount, isAddedToCart }}>
             {props.children}
+            {isNeedGuide? window.alert("You have selected a product. Please create an account to proceed with the order."):null}        
         </CartContext.Provider>
     );
 
