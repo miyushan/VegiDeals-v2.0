@@ -10,7 +10,6 @@ export default function CardItem(props) {
   const [buttonStyle, setButtonStyle] = useState({});
   const [isButtonSelected, setisButtonSelected] = useState(false);
   const [cartBtnText, setCartBtnText] = useState("Add To Cart");
-  const [isNeedGuide, setIsNeedGuide] = useState(false);
   const { addToCart } = useContext(CartContext);
   const { productArr } = useContext(ProductContext);
 
@@ -52,17 +51,6 @@ export default function CardItem(props) {
       });
       setCartBtnText("Remove");
       setisButtonSelected(true);
-
-      try {
-        //get data in the session
-        let data = localStorage.getItem("newUser");
-        data = JSON.parse(data);
-        console.log(data);
-        if (data.selectedAProduct) {
-          setIsNeedGuide(true);
-        }
-        // console.log("Successful Login!");
-      } catch (err) {}
     } else {
       setButtonStyle({});
       setisButtonSelected(false);
@@ -100,9 +88,7 @@ export default function CardItem(props) {
     }
   };
 
-  const newUser = () => {
-   
-  };
+
 
   return (
     <>
@@ -156,13 +142,6 @@ export default function CardItem(props) {
                       </Col>
                     </Row>
                     
-            {/* {isNeedGuide
-          ? window.confirm(
-              "Your product is added to the cart. \nYou can select the quantity now. \nUse '+' and '-' signs for respectively increse and decrease quantity by 100g.\nIf you want to remove an item, click on remove button.\After selecting items click on cart icon.\n(If you want to exit from User Guide press 'Cancel')"
-            )
-            ? setIsNeedGuide(false)
-            : localStorage.removeItem("newUser")
-          : null} */}
 
                   </Col>
                 </Row>
