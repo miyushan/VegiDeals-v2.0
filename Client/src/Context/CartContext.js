@@ -14,7 +14,7 @@ function CartContextProvider(props) {
     const [totalWeight, setTotalWeight] = useState(0);
     const [priceWithDiscount, setPriceWithDiscount] = useState(0);
     const [isAddedToCart, setIsAddedToCart] = useState();
-    const [isNeedGuide, setIsNeedGuide] = useState(false);
+    // const [isNeedGuide, setIsNeedGuide] = useState(false);
     const discount = 5;
 
     useEffect(() => {
@@ -148,29 +148,26 @@ function CartContextProvider(props) {
             let tempData = localStorage.getItem("newUser");
             tempData = JSON.parse(tempData);
             console.log(tempData);
-            if (newItems.length===1 && tempData.isCreatedAcc===true) {
-                // localStorage.removeItem("newUser");
-                // let newUser = {
-                //     selectedAProduct: true,
-                //     isCreatedAcc: false
-                // };
-          
-                
-                //Add the session
-                // localStorage.setItem("newUser", JSON.stringify(newUser));
-                setIsNeedGuide(true);
-            }else{
-                let newUser = {
-                    selectedAProduct: false,
+            if (newItems.length===1 && tempData.isCreatedAcc) {
+                if(window.confirm(
+                        "Your product is added to the cart. \nYou can select the quantity now.\nAfter click on 'OK' you will see '+' and '-' signs, which can respectively increse and decrease quantity by 100g.\nIf you want to remove an item, you will have a remove button also.\nAfter selecting items click on cart icon.\n(If you want to exit from User Guide press 'Cancel')"
+                      )===true  ){
+                        let newUser = {
+                            selectedAProduct: true,
+                            isCreatedAcc: false
+                        };
                   
-                };
-                
-                //Add the session
-                localStorage.setItem("newUser", JSON.stringify(newUser));
-                setIsNeedGuide(false);
+                        
+                        // Add the session
+                        localStorage.setItem("newUser", JSON.stringify(newUser));
+                        // setIsNeedGuide(true);
+
+
+                      }  else{
+                        localStorage.removeItem("newUser");
+
+                      }                      
             }
-            console.log(newItems.length);
-            // console.log("Successful Login!");
           } catch (err) {}
 
         localStorage.setItem('cartDetails', JSON.stringify(newItems));
@@ -204,7 +201,7 @@ function CartContextProvider(props) {
     return (
         <CartContext.Provider value={{ addToCart, cartProducts, setCartProducts, removeFromCart, changeCartQuantity, totalPrice, totalWeight, priceWithDiscount, isAddedToCart }}>
             {props.children}
-            {isNeedGuide? window.alert("You have selected a product. Please create an account to proceed with the order."):null}        
+            {/* {isNeedGuide? window.alert("You have selected a product. Please create an account to proceed with the order."):null}         */}
         </CartContext.Provider>
     );
 
