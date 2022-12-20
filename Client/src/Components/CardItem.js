@@ -59,7 +59,7 @@ export default function CardItem (props){
             setPrice(props.Price);
         }
     }
-  };
+
 
   const getItem = (id) => {
     const numOfImages = productArr.length;
