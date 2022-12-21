@@ -20,7 +20,8 @@ export default function LoginForm() {
     const [refresh, setRefresh] = useState(false);
 
     const onChangeContactNumber = (e) => {
-        setContactNumber(e.target.value);
+        const temp = e.target.value.replace(/\D/g, '');
+        setContactNumber(temp);
     }
 
     const onChangePassword = (e) => {
@@ -45,7 +46,7 @@ export default function LoginForm() {
 
         if (contactNumber.length === 0 || password.length === 0) {
             alert("All Fields should be filled!");
-        }else if(contactNumber.length!=10){
+        }else if(contactNumber.length!==10){
             alert("Contact Number should be 10 digits!");
 
         } else if (contactNumber === '0773298953' && password === '321') {
