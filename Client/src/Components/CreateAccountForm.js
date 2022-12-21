@@ -62,48 +62,48 @@ export default function CreateAccountForm() {
           });
         } catch (e) { }
 
-          if (isNewNumber === true) {
-            let obj = {
-              firstName: firstName,
-              lastName: lastName,
-              gender: gender,
-              contactNumber: contactNumber,
-              password: password,
-              isRegistered: false,
-            };
-            // const obj_json = JSON.stringify(obj);
+        if (isNewNumber === true) {
+          let obj = {
+            firstName: firstName,
+            lastName: lastName,
+            gender: gender,
+            contactNumber: contactNumber,
+            password: password,
+            isRegistered: false,
+          };
+          // const obj_json = JSON.stringify(obj);
 
-            // get id of the branch
-            branches.forEach((branch) => {
-              if (branch.Name.toUpperCase() === branchName.toUpperCase()) {
-                obj.Branch_id = branch.id;
-              }
-            });
-            localStorage.removeItem("newUser");
-            // pass new account details to db
-            axios.post("http://localhost:4000/customers", obj).then((res) => {
-              console.log("New Account created");
-              setFirstName("");
-              setLastName("");
-              setGender("");
-              setContactNumber("");
-              setBranchName("");
-              setPassword("");
-              navigate("/login");
-            });
+          // get id of the branch
+          branches.forEach((branch) => {
+            if (branch.Name.toUpperCase() === branchName.toUpperCase()) {
+              obj.Branch_id = branch.id;
+            }
+          });
+          localStorage.removeItem("newUser");
+          // pass new account details to db
+          axios.post("http://localhost:4000/customers", obj).then((res) => {
+            console.log("New Account created");
+            setFirstName("");
+            setLastName("");
+            setGender("");
+            setContactNumber("");
+            setBranchName("");
+            setPassword("");
+            navigate("/login");
+          });
 
-            //Session object
-            let newUser = {
-              isCreatedAcc: true,
-            };
+          //Session object
+          let newUser = {
+            isCreatedAcc: true,
+          };
 
-            //Add the session
-            localStorage.setItem("newUser", JSON.stringify(newUser));
-          } else {
-            isNewNumber = true;
-            alert("User already Exist!");
-          }
-        
+          //Add the session
+          localStorage.setItem("newUser", JSON.stringify(newUser));
+        } else {
+          isNewNumber = true;
+          alert("User already Exist!");
+        }
+
       });
   };
 
@@ -122,14 +122,18 @@ export default function CreateAccountForm() {
 
     // validate mobile number
     if (contactNumber.length !== 10) {
-      alert("Mobile number should be 10 digits!");
+      alert("Mobile mobile number should be 10 digits!");
       return false;
     }
-    let validMobileNumber = /^[0-9]*$/;
-    if (contactNumber.match(validMobileNumber) === false) {
-      alert("Mobile number should contain only numbers!");
+    if (contactNumber.charAt(0) !== '0') {
+      alert("Invalid mobile number !");
       return false;
     }
+    if (contactNumber.charAt(1) !== '7') {
+      alert("Invalid mobile number !");
+      return false;
+    }
+
 
 
     // validate pw
