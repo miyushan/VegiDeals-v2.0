@@ -127,13 +127,12 @@ export default function CreateAccountForm() {
       alert("Mobile mobile number should be 10 digits!");
       return false;
     }
-    console.log(contactNumber.charAt(0))
-    if (contactNumber.charAt(0) !== '0') {
-      alert("Invalid mobile number!");
+    if (!contactNumber.startsWith('0')) {
+      alert("Invalid mobile number !");
       return false;
     }
-    if (contactNumber.charAt(1) !== '7') {
-      alert("Invalid mobile number!");
+    if (!contactNumber.startsWith('7',1)) {
+      alert("Invalid mobile number !");
       return false;
     }
 
