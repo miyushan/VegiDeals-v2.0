@@ -107,13 +107,13 @@ export default function LoginForm() {
             <Form className="login-form" onSubmit={onSubmit} method="post">
 
                 <Form.Group className="mb-3" controlId="formBasicPhoneNumber">
-                    <Form.Control className="login-input" type="text" placeholder="Phone Number" variant="success" name="contactNumber" value={contactNumber} onChange={onChangeContactNumber} />
+                    <Form.Control className="login-input" type="text" maxLength={10} minLength={10} placeholder="Phone Number" variant="success" name="contactNumber" value={contactNumber} onChange={onChangeContactNumber} />
                     <Form.Text className="text-muted">
                     </Form.Text>
                 </Form.Group>
 
                 <Form.Group className="mb-3" controlId="formBasicPassword">
-                    <Form.Control className="login-input" type="password" placeholder="Password" variant="success" name="password" value={password} onChange={onChangePassword} />
+                    <Form.Control className="login-input" type="password" minLength={8} placeholder="Password" variant="success" name="password" value={password} onChange={onChangePassword} />
                 </Form.Group>
 
                 <Button href="" className="login-submit-btn login-input" type="submit" variant="success">LOG IN</Button>
