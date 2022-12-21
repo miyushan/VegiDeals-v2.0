@@ -45,6 +45,9 @@ export default function LoginForm() {
 
         if (contactNumber.length === 0 || password.length === 0) {
             alert("All Fields should be filled!");
+        }else if(contactNumber.length!=10){
+            alert("Contact Number should be 10 digits!");
+
         } else if (contactNumber === '0773298953' && password === '321') {
             navigate('/home');
         } else {
@@ -107,7 +110,7 @@ export default function LoginForm() {
             <Form className="login-form" onSubmit={onSubmit} method="post">
 
                 <Form.Group className="mb-3" controlId="formBasicPhoneNumber">
-                    <Form.Control className="login-input" type="text" maxLength={10} minLength={10} placeholder="Phone Number" variant="success" name="contactNumber" value={contactNumber} onChange={onChangeContactNumber} />
+                    <Form.Control className="login-input" type="text" maxLength={10} placeholder="Phone Number" variant="success" name="contactNumber" value={contactNumber} onChange={onChangeContactNumber} />
                     <Form.Text className="text-muted">
                     </Form.Text>
                 </Form.Group>
