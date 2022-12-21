@@ -188,7 +188,7 @@ function PaymentCard() {
                         <Col xs={{ span: 4, offset: 3 }}>
                             <Form.Group controlId="formGridCVV">
                                 <Form.Label className="b_payment-field-title">CVC</Form.Label>
-                                <Form.Control type="text" maxLength={3} className="b_login-input b_btn-square" placeholder="123" value={cvv} onChange={onChangecvv} required />
+                                <Form.Control type="text" maxLength={3} className="b_login-input b_btn-square" placeholder="123" value={cvv} onChange={onChangecvv} />
 
                             </Form.Group>
 

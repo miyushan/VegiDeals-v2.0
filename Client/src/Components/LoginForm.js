@@ -20,7 +20,8 @@ export default function LoginForm() {
     const [refresh, setRefresh] = useState(false);
 
     const onChangeContactNumber = (e) => {
-        setContactNumber(e.target.value);
+        const temp = e.target.value.replace(/\D/g, '');
+        setContactNumber(temp);
     }
 
     const onChangePassword = (e) => {
@@ -45,6 +46,9 @@ export default function LoginForm() {
 
         if (contactNumber.length === 0 || password.length === 0) {
             alert("All Fields should be filled!");
+        }else if(contactNumber.length!==10){
+            alert("Contact Number should be 10 digits!");
+
         } else if (contactNumber === '0773298953' && password === '321') {
             navigate('/home');
         } else {
@@ -107,13 +111,13 @@ export default function LoginForm() {
             <Form className="login-form" onSubmit={onSubmit} method="post">
 
                 <Form.Group className="mb-3" controlId="formBasicPhoneNumber">
-                    <Form.Control className="login-input" type="text" placeholder="Phone Number" variant="success" name="contactNumber" value={contactNumber} onChange={onChangeContactNumber} />
+                    <Form.Control className="login-input" type="text" maxLength={10} placeholder="Phone Number" variant="success" name="contactNumber" value={contactNumber} onChange={onChangeContactNumber} />
                     <Form.Text className="text-muted">
                     </Form.Text>
                 </Form.Group>
 
                 <Form.Group className="mb-3" controlId="formBasicPassword">
-                    <Form.Control className="login-input" type="password" placeholder="Password" variant="success" name="password" value={password} onChange={onChangePassword} />
+                    <Form.Control className="login-input" type="password" minLength={8} placeholder="Password" variant="success" name="password" value={password} onChange={onChangePassword} />
                 </Form.Group>
 
                 <Button href="" className="login-submit-btn login-input" type="submit" variant="success">LOG IN</Button>
