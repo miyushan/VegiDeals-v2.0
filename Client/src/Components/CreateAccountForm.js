@@ -60,18 +60,8 @@ export default function CreateAccountForm() {
               isNewNumber = false;
             }
           });
-        } catch (e) {}
+        } catch (e) { }
 
-        if (
-          firstName.length === 0 ||
-          lastName.length === 0 ||
-          gender.length === 0 ||
-          contactNumber.length === 0 ||
-          branchName.length === 0 ||
-          password.length === 0
-        ) {
-          alert("All Fields should be filled!");
-        } else {
           if (isNewNumber === true) {
             let obj = {
               firstName: firstName,
@@ -113,14 +103,53 @@ export default function CreateAccountForm() {
             isNewNumber = true;
             alert("User already Exist!");
           }
-        }
+        
       });
   };
+
+  const validateFileds = () => {
+    if (
+      firstName.length === 0 ||
+      lastName.length === 0 ||
+      gender.length === 0 ||
+      contactNumber.length === 0 ||
+      branchName.length === 0 ||
+      password.length === 0
+    ) {
+      alert("All Fields should be filled!");
+      return false;
+    }
+
+    // validate mobile number
+    if (contactNumber.length !== 10) {
+      alert("Mobile number should be 10 digits!");
+      return false;
+    }
+    let validMobileNumber = /^[0-9]*$/;
+    if (contactNumber.match(validMobileNumber) === false) {
+      alert("Mobile number should contain only numbers!");
+      return false;
+    }
+
+
+    // validate pw
+    let validPassword = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[a-zA-Z]).{8,}$/;
+    if (password.match(validPassword)) {
+      console.log("valid password");
+    } else {
+      alert("Password must contain at least 8 characters, including UPPER/lowercase and numbers");
+      return false;
+    }
+
+    return true;
+  }
 
   const onSubmit = (e) => {
     // console.log(gender)
     e.preventDefault();
-    checkNewUser();
+    if (validateFileds()) {
+      checkNewUser();
+    }
   };
 
   useEffect(() => {
@@ -132,8 +161,6 @@ export default function CreateAccountForm() {
     });
     setHintData(tempBranchArr);
   }, [branches]);
-
-  // box-shadow: 0 0 0 0.25rem rgb(60 153 110 / 50%);
 
   return (
     <>
