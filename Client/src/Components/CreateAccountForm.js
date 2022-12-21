@@ -36,7 +36,9 @@ export default function CreateAccountForm() {
   };
 
   const onChangeContactNumber = (e) => {
-    setContactNumber(e.target.value);
+    // setContactNumber(e.target.value);
+    const temp = e.target.value.replace(/\D/g, '');
+    setContactNumber(temp);
   };
 
   const onChangeBranchName = (e) => {
@@ -125,12 +127,13 @@ export default function CreateAccountForm() {
       alert("Mobile mobile number should be 10 digits!");
       return false;
     }
+    console.log(contactNumber.charAt(0))
     if (contactNumber.charAt(0) !== '0') {
-      alert("Invalid mobile number !");
+      alert("Invalid mobile number!");
       return false;
     }
     if (contactNumber.charAt(1) !== '7') {
-      alert("Invalid mobile number !");
+      alert("Invalid mobile number!");
       return false;
     }
 
